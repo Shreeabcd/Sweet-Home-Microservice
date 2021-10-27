@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: PAYMENT-SERVICE
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+  instance:
+    hostname: localhost
+
+server:
+  port: 8083
+
+bookingApp:
+  url: http://BOOKING-SERVICE/hotel/booking/{transactionId}/transaction
+
